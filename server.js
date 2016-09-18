@@ -11,6 +11,6 @@ app.use(express.static(__dirname + '/public'));
 require ("./test/app.js")(app);
 
 var ipaddress = process.env.IP;
-var port      = process.env.PORT || 5000;
+var port      = process.env.PORT || 3000;
 
 app.listen(port, ipaddress);
