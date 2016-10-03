@@ -3,5 +3,67 @@ input.form-control {
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.white-icon {
+    color: white;
+}
+
+.navbar-header {
+    float: left;
+}
+
+.left-space {
+    padding-left: 10px;
+}
+
+.navbar {
+    background-color: #337ab7;
+}
+
+.navbar-default .navbar-text {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-link {
+    color: #fff;
+}
+
+.list-group-item {
+    border: 0px;
+    color: #337ab7;
+}
+
+a.list-group-item {
+    color: #337ab7;
+}
+
+.list-text {
+    display: inline;
+    color: black;
+}
+
+.relative-position {
+    position: relative;
+}
+
+.absolute-position {
+    position: absolute;
+}
+
+.list-element-menu {
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+    background-color: white;
+}
+
+.zero-right-padding {
+    padding-right: 0px;
 }
