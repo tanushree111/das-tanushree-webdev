@@ -81,3 +81,8 @@ a.list-group-item {
     top:0;
     bottom: 0;
 }
+
+.nav-margins{
+    margin-left: 15px;
+    margin-right: 15px;
+}

@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WebAppMaker">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Assignment Home Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+    <script src="views/user/user.controller.client.js"></script>
+    <script src="views/website/website.controller.client.js"></script>
+    <script src="views/page/page.controller.client.js"></script>
+    <script src="views/widget/widget.controller.client.js"></script>
 </head>
 <body>
-    <h1>Assignment Home Page</h1>
+   <!-- <h1>Assignment Home Page</h1>
 
 <h2>Required links</h2>
 <ul>
     <li>
-        <a href="login.html">Login Page</a>
+        <a href="views/user/login.view.client.html">Login Page</a>
     </li>
     <li>
-        <a href="register.html">Register Page</a>
+        <a href="views/user/register.view.client.html">Register Page</a>
     </li>
-</ul>
+</ul>-->
+<div ng-view></div>
 </body>
 </html>

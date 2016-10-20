@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="white-icon" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.page._id}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Widget Edit
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="white-icon" ng-click="model.updateWidget(model.widget)">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+<div class="row container-fluid">
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder=""/>
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input ng-model="model.widget.text"  type="text" class="form-control" id="text"
+                   placeholder="US Senate Reaches Compromise on Emergency Zika Funding"/>
+        </div>
+        <div class="form-group">
+            <label for="size">Size</label>
+            <input ng-model="model.widget.size"  type="text" class="form-control" id="size" placeholder="3"/>
+        </div>
+        <a class="btn btn-danger  btn-block"
+           ng-click="model.deleteWidget()">Delete</a>
+    </form>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="row container-fluid">
+        <div class="navbar-text pull-right">
+            <a class="white-icon" href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

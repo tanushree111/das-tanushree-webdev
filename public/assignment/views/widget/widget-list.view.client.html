@@ -1,0 +1,79 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="white-icon" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Widgets
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="white-icon" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div class="list-group">
+        <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets" class="list-group-item">
+            <div class="relative-position">
+                <div class="container-fluid zero-right-padding">
+                    <div ng-switch="widget.size" ng-switch-when="HEADER">
+                        <h1 ng-switch-when="1" class="list-text">{{widget.text}}</h1>
+                        <h2 ng-switch-when="2" class="list-text">{{widget.text}}</h2>
+                        <h3 ng-switch-when="3" class="list-text">{{widget.text}}</h3>
+                        <h4 ng-switch-when="4" class="list-text">{{widget.text}}</h4>
+                        <h4 ng-switch-when="5" class="list-text">{{widget.text}}</h4>
+                        <h6 ng-switch-when="6" class="list-text">{{widget.text}}</h6>
+                    </div>
+                    <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)">
+                    </div>
+                    <div ng-switch-when="IMAGE">
+                        <img class="img-responsive" width="{{widget.size}}"
+                             src="{{widget.url}}"
+                             alt="image"/>
+                    </div>
+                    <div ng-switch-when="YOUTUBE">
+                        <iframe class="embed-responsive-item" width="{{widget.size}}" ng-src="{{model.checkSafeYoutubeUrl(widget.url)}}"></iframe>
+                    </div>
+                </div>
+                <div class="absolute-position list-element-menu zero-right-padding">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"><span class="glyphicon glyphicon-cog"></span></a>
+                    <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a class="white-icon" href="#">
+                <span class="glyphicon glyphicon-play"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-left left-space">
+
+            <a class="white-icon" href="#">
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="white-icon" href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
