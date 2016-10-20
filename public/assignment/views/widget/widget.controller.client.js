@@ -62,7 +62,7 @@
             if (widget.widgetType) {
                 if (widget.widgetType === "HEADER" && !widget.text) {
                     vm.error = "Text field is mandatory for Header widget";
-                } else if ((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.url()) {
+                } else if ((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.url) {
                     vm.error = "URL field is mandatory for Image and Youtube widgets";
                 } else {
                     widget = WidgetService.createWidget(vm.pageId, widget);
@@ -98,7 +98,7 @@
             if (widget.widgetType) {
                 if (widget.widgetType === "HEADER" && !widget.text) {
                     vm.error = "Text field is mandatory for Header widget";
-                } else if ((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.url()) {
+                } else if ((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.url) {
                     vm.error = "URL field is mandatory for Image and Youtube widgets";
                 } else {
                     widget = WidgetService.updateWidget(vm.widgetId, widget);

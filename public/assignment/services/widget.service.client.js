@@ -50,6 +50,9 @@
             if(widget.widgetType === "HEADER" && !widget.size){
                 widget.size = 3;
             }
+            if((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.width){
+                widget.width = "100%";
+            }
             widgets.push(widget);
             return widget;
         }
