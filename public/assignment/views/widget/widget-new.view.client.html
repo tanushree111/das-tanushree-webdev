@@ -1,7 +1,7 @@
 <div ng-show="model.error" class="alert alert-danger" role="alert">
     {{model.error}}
 </div>
-<div class="container">
+<div>
     <div ng-switch="model.widget.widgetType">
         <div ng-switch-when="HEADER">
             <ng-include src="'views/widget/widget-header-new.view.client.html'"></ng-include>

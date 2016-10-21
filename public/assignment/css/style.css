@@ -29,6 +29,7 @@ body {
 
 .navbar-default .navbar-text {
     color: #fff;
+    margin-left: 0px;
 }
 
 .navbar-default .navbar-brand {
@@ -42,6 +43,7 @@ body {
 .list-group-item {
     border: 0px;
     color: #337ab7;
+    padding-left: 0px;
 }
 
 a.list-group-item {
@@ -83,6 +85,11 @@ a.list-group-item {
 }
 
 .nav-margins{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.container-fluid{
     margin-left: 15px;
     margin-right: 15px;
 }
