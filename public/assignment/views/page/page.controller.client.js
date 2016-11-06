@@ -10,7 +10,10 @@
         vm.userId = $routeParams["uid"];
         vm.websiteId = $routeParams["wid"];
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+            PageService.findPageByWebsiteId(vm.websiteId)
+                .success(function(pages){
+                    vm.pages =  pages;
+                });
         }
         init();
     }
@@ -23,19 +26,25 @@
 
         function createPage(page) {
             if(page.name) {
-                page = PageService.createPage(vm.websiteId, page);
-                if (page) {
-                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-                } else {
-                    vm.error = "Unable to create page";
+                PageService.createPage(vm.websiteId, page)
+                        .success(function(){
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                        })
+                        .error(function(){
+                            vm.error = "Unable to create page";
+                        });
+
                 }
-            }else{
+            else{
                 vm.error = "Page name is mandatory";
             }
         }
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+            PageService.findPageByWebsiteId(vm.websiteId)
+                .success(function(pages){
+                vm.pages =  pages;
+            });
         }
         init();
     }
@@ -50,28 +59,41 @@
 
         function updatePage(page) {
             if(page.name) {
-                page = PageService.updatePage(vm.pageId, page);
-                if (page) {
+                PageService.updatePage(vm.pageId, page)
+                    .success(function(){
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-                } else {
+                })
+                    .error(function(){
                     vm.error = "Unable to edit page";
-                }
+                    });
+
             }else{
                 vm.error = "Page name is mandatory";
             }
         }
 
         function deletePage() {
-            if(PageService.deletePage(vm.pageId)){
+
+            PageService.deletePage(vm.pageId)
+                .success(function(){
                 $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-            }else{
-                vm.error = "Page could not be deleted";
-            }
+            })
+                .error(function(){
+                    vm.error = "Page could not be deleted";
+                });
         }
 
         function init() {
-            vm.page = PageService.findPageById(vm.pageId);
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+
+            PageService.findPageByWebsiteId(vm.websiteId)
+                .success(function(pages){
+                    vm.pages =  pages;
+                });
+            PageService.findPageById(vm.pageId)
+                .success(function(page){
+                    vm.page =  page;
+                });
+
         }
         init();
 

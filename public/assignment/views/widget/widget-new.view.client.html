@@ -2,6 +2,7 @@
     {{model.error}}
 </div>
 <div>
+    <div ng-if="model.widget.widgetType">
     <div ng-switch="model.widget.widgetType">
         <div ng-switch-when="HEADER">
             <ng-include src="'views/widget/widget-header-new.view.client.html'"></ng-include>
@@ -13,4 +14,5 @@
             <ng-include src="'views/widget/widget-youtube-new.view.client.html'"></ng-include>
         </div>
     </div>
+        </div>
 </div>

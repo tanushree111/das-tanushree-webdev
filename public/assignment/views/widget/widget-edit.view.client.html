@@ -3,6 +3,7 @@
 </div>
 
 <div>
+    <div ng-if="model.widget.widgetType">
     <div ng-switch="model.widget.widgetType">
         <div ng-switch-when="HEADER">
             <ng-include src="'views/widget/widget-header.view.client.html'"></ng-include>
@@ -13,5 +14,6 @@
         <div ng-switch-when="YOUTUBE">
             <ng-include src="'views/widget/widget-youtube.view.client.html'"></ng-include>
         </div>
+    </div>
     </div>
 </div>

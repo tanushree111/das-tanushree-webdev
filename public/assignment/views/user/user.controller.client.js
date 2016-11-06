@@ -10,12 +10,14 @@
         vm.login = login;
 
         function login(user) {
-            user = UserService.findUserByCredentials(user.username, user.password);
-            if(user) {
-                $location.url("/user/" + user._id);
-            } else {
-                vm.error = "Unable to login";
-            }
+            UserService.findUserByCredentials(user.username, user.password)
+                .success(function(user){
+                    $location.url("/user/" + user._id);
+                })
+                .error(function(){
+                    vm.error = "Unable to login";
+                });
+
         }
     }
 
@@ -26,12 +28,14 @@
 
         function register(user) {
             if(user.password === vm.confirmPassword) {
-                user = UserService.createUser(user);
-                if (user) {
+                UserService.createUser(user)
+                 .success(function(){
                     $location.url("/user/" + user._id);
-                } else {
+                })
+                    .error(function(){
                     vm.error = "Unable to register";
-                }
+                });
+
             }else {
                 vm.error = "Passwords in both fields don't match";
             }
@@ -42,19 +46,41 @@
         var vm = this;
         vm.userId = $routeParams["uid"];
         vm.updateUser = updateUser;
+        vm.unregisterUser = unregisterUser;
+
         function init() {
-            vm.user = UserService.findUserById(vm.userId);
+             UserService.findUserById(vm.userId)
+                .success(function(user){
+                    vm.user = user;
+                })
+                .error(function(){
+                    vm.error = "Unable to fetch user";
+                });
+
         }
         init();
 
 
         function updateUser(user) {
-            user = UserService.updateUser(vm.userId, user);
-            if(user) {
+           UserService.updateUser(vm.userId, user)
+               .success(function(){
                 $location.url("/user/" + user._id);
-            } else {
+               })
+               .error(function(){
                 vm.error = "Unable to update profile";
-            }
+            });
+
+        }
+
+        function unregisterUser() {
+            UserService.deleteUser(vm.userId)
+                .success(function(){
+                    $location.url("/login");
+                })
+                .error(function(){
+                    vm.error = "Unable to unregister user";
+                });
+
         }
 
     }

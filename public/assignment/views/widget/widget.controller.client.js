@@ -14,7 +14,10 @@
         vm.checkSafeHtml = checkSafeHtml;
         vm.checkSafeYoutubeUrl = checkSafeYoutubeUrl;
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+            WidgetService.findWidgetsByPageId(vm.pageId)
+                .success(function (widgets) {
+                    vm.widgets = widgets;
+                });
         }
 
         init();
@@ -37,7 +40,10 @@
         vm.websiteId = $routeParams["wid"];
         vm.pageId = $routeParams["pid"];
         function init() {
-            vm.widgetTypes = WidgetService.getWidgetTypes();
+            WidgetService.getWidgetTypes()
+                .success(function (widgetTypes) {
+                    vm.widgetTypes = widgetTypes;
+                });
         }
 
         init();
@@ -65,12 +71,13 @@
                 } else if ((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.url) {
                     vm.error = "URL field is mandatory for Image and Youtube widgets";
                 } else {
-                    widget = WidgetService.createWidget(vm.pageId, widget);
-                    if (widget) {
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                    } else {
-                        vm.error = "Unable to create widget";
-                    }
+                    WidgetService.createWidget(vm.pageId, widget)
+                        .success(function () {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        })
+                        .error(function () {
+                            vm.error = "Unable to create widget";
+                        });
                 }
             } else {
                 vm.error = "Widget type unidentified";
@@ -89,7 +96,10 @@
         vm.deleteWidget = deleteWidget;
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            WidgetService.findWidgetById(vm.widgetId)
+                .success(function (widget) {
+                    vm.widget = widget;
+                });
         }
 
         init();
@@ -101,12 +111,13 @@
                 } else if ((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.url) {
                     vm.error = "URL field is mandatory for Image and Youtube widgets";
                 } else {
-                    widget = WidgetService.updateWidget(vm.widgetId, widget);
-                    if (widget) {
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                    } else {
-                        vm.error = "Unable to edit widget";
-                    }
+                    WidgetService.updateWidget(vm.widgetId, widget)
+                        .success(function () {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        })
+                        .error(function () {
+                            vm.error = "Unable to edit widget";
+                        });
                 }
             } else {
                 vm.error = "Widget type unidentified";
@@ -114,11 +125,13 @@
         }
 
         function deleteWidget() {
-            if (WidgetService.deleteWidget(vm.widgetId)) {
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-            } else {
-                vm.error = "Widget could not be deleted";
-            }
+            WidgetService.deleteWidget(vm.widgetId)
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                })
+                .error(function () {
+                    vm.error = "Widget could not be deleted";
+                });
         }
     }
 })();

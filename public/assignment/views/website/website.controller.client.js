@@ -9,7 +9,13 @@
         var vm = this;
         vm.userId = $routeParams["uid"];
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+            WebsiteService.findWebsitesByUser(vm.userId)
+            .success(function(websites){
+                vm.websites = websites;
+            })
+                .error(function(){
+                    vm.error = "Unable to fetch websites";
+                });;
         }
         init();
     }
@@ -22,19 +28,25 @@
 
         function createWebsite(website) {
             if(website.name) {
-                website = WebsiteService.createWebsite(vm.userId, website);
-                if (website) {
-                    $location.url("/user/" + vm.userId + "/website");
-                } else {
-                    vm.error = "Unable to create website";
+                WebsiteService.createWebsite(vm.userId, website)
+                    .success(function(){
+                        $location.url("/user/" + vm.userId + "/website");
+                    })
+                    .error(function(){
+                        vm.error = "Unable to create website";
+                    });
+
                 }
-            }else{
+            else{
                 vm.error = "Website name is mandatory";
             }
         }
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+             WebsiteService.findWebsitesByUser(vm.userId)
+                .success(function(websites){
+                vm.websites = websites;
+            });
         }
         init();
     }
@@ -48,28 +60,38 @@
 
         function updateWebsite(website) {
             if(website.name) {
-                website = WebsiteService.updateWebsite(vm.websiteId, website);
-                if (website) {
-                    $location.url("/user/" + vm.userId + "/website");
-                } else {
-                    vm.error = "Unable to edit website";
-                }
+                WebsiteService.updateWebsite(vm.websiteId, website)
+                    .success(function(){
+                        $location.url("/user/" + vm.userId + "/website");
+                    })
+                    .error(function(){
+                        vm.error = "Unable to edit website";
+                    });
             }else{
                 vm.error = "Website name is mandatory";
             }
         }
 
         function deleteWebsite() {
-            if(WebsiteService.deleteWebsite(vm.websiteId)){
-                $location.url("/user/" + vm.userId + "/website");
-            }else{
-                vm.error = "Website could not be deleted";
-            }
+                WebsiteService.deleteWebsite(vm.websiteId)
+                    .success(function(){
+                        $location.url("/user/" + vm.userId + "/website");
+                    })
+                    .error(function(){
+                        vm.error = "Website could not be deleted";
+                    });
         }
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            WebsiteService.findWebsitesByUser(vm.userId)
+            .success(function(websites){
+                vm.websites = websites;
+            });
+
+            WebsiteService.findWebsiteById(vm.websiteId)
+            .success(function(website){
+                vm.website = website;
+            });
         }
         init();
 
