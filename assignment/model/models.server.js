@@ -1,14 +1,11 @@
 module.exports = function() {
     var mongoose = require('mongoose');
-    var connectionString = 'mongodb://tan:tan111@ds033046.mlab.com:33046/webdevtan';
-    /*
-    if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-        connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-            process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-            process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-            process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-            process.env.OPENSHIFT_APP_NAME;
-    }*/
+    //var connectionString = 'mongodb://tan:tan111@ds033046.mlab.com:33046/webdevtan';
+    var connectionString = 'mongodb://localhost/wam-fall-2016';
+
+    if(process.env.MONGOLAB_URI) {
+        connectionString = process.env.MONGOLAB_URI;
+    }
     mongoose.connect(connectionString);
    // mongoose.connect('mongodb://localhost/wam-fall-2016');
     var userModel = require("./user/user.model.server")();
