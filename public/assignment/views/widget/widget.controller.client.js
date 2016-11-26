@@ -59,16 +59,16 @@
 
         function init() {
             vm.widget = {};
-            vm.widget.widgetType = vm.type;
+            vm.widget.type = vm.type;
         }
 
         init();
 
         function createWidget(widget) {
-            if (widget.widgetType) {
-                if (widget.widgetType === "HEADER" && !widget.text) {
+            if (widget.type) {
+                if (widget.type === "HEADING" && !widget.text) {
                     vm.error = "Text field is mandatory for Header widget";
-                } else if ((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.url) {
+                } else if ((widget.type === "IMAGE" || widget.type === "YOUTUBE") && !widget.url) {
                     vm.error = "URL field is mandatory for Image and Youtube widgets";
                 } else {
                     WidgetService.createWidget(vm.pageId, widget)
@@ -105,10 +105,10 @@
         init();
 
         function updateWidget(widget) {
-            if (widget.widgetType) {
-                if (widget.widgetType === "HEADER" && !widget.text) {
+            if (widget.type) {
+                if (widget.type === "HEADER" && !widget.text) {
                     vm.error = "Text field is mandatory for Header widget";
-                } else if ((widget.widgetType === "IMAGE" || widget.widgetType === "YOUTUBE") && !widget.url) {
+                } else if ((widget.type === "IMAGE" || widget.type === "YOUTUBE") && !widget.url) {
                     vm.error = "URL field is mandatory for Image and Youtube widgets";
                 } else {
                     WidgetService.updateWidget(vm.widgetId, widget)

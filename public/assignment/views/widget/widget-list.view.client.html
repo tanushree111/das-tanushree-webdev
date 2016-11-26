@@ -24,10 +24,10 @@
         {{model.error}}
     </div>
     <div class="list-group" jga-sortable>
-        <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets" class="list-group-item">
+        <div ng-switch="widget.type" ng-repeat="widget in model.widgets" class="list-group-item">
             <div class="relative-position">
                 <div class="zero-right-padding">
-                    <div ng-switch="widget.size" ng-switch-when="HEADER">
+                    <div ng-switch="widget.size" ng-switch-when="HEADING">
                         <h1 ng-switch-when="1" class="list-text">{{widget.text}}</h1>
                         <h2 ng-switch-when="2" class="list-text">{{widget.text}}</h2>
                         <h3 ng-switch-when="3" class="list-text">{{widget.text}}</h3>
@@ -42,8 +42,18 @@
                              src="{{widget.url}}"
                              alt="image"/>
                     </div>
-                    <div ng-switch-when="YOUTUBE">
+                    <div ng-switch-when="YOUTUBE" class="youtube-widget">
                         <iframe class="embed-responsive-item" width="{{widget.size}}" ng-src="{{model.checkSafeYoutubeUrl(widget.url)}}"></iframe>
+                    </div>
+                    <div ng-switch-when="INPUT">
+                        <div ng-if="widget.formatted" text-angular ng-model="widget.text" ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                              ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                              ['indent','outdent'],['html']]"/>
+                        <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                               placeholder="{{widget.placeholder}}" value="{{widget.text}}" class="form-control"/>
+                        <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                                  rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                                  class="form-control">{{widget.text}}</textarea>
                     </div>
                 </div>
                 <div class="absolute-position list-element-menu zero-right-padding">

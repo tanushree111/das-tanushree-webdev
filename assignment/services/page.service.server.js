@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function(app, model) {
     var pages =
         [
             { "_id": "321", "name": "Post 1", "websiteId": "456" },
@@ -15,58 +15,90 @@ module.exports = function(app) {
 
     function findAllPagesForWebsite(req, res){
         var websiteId = req.params.websiteId;
-        var result = [];
-        for(var p in pages){
-            if(pages[p].websiteId === websiteId){
-                result.push(pages[p]);
-            }
-        }
-        res.json(result);
+        model
+            .pageModel
+            .findAllPagesForWebsite(websiteId)
+            .then(
+                function(pages){
+                    if(pages) {
+                        res.json(pages);
+                    }else{
+                        res.send('0');
+                    }
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
 
     function findPageById(req, res){
         var pid = req.params.pageId;
-        for(var p in pages){
-            if(pages[p]._id === pid){
-                res.send(pages[p]);
-                return;
-            }
-        }
-        res.send(0);
+        model
+            .pageModel
+            .findPageById(pid)
+            .then(
+                function(page){
+                    if(page) {
+                        res.json(page);
+                    }else{
+                        res.send('0');
+                    }
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
 
     function createPage(req, res){
         var page = req.body;
         var websiteId = req.params.websiteId;
-        page._id = (new Date()).getTime().toString();
-        page.websiteId = websiteId;
-        pages.push(page);
-
-        res.send(pages);
+        //page._website = websiteId;
+        model
+            .pageModel
+            .createPage(websiteId, page)
+            .then(
+                function(newPage){
+                    res.send(newPage);
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
 
     }
 
     function updatePage(req, res){
         var page = req.body;
         var pid = req.params.pageId;
-        for(var p in pages){
-            if(pages[p]._id === pid){
-                pages[p] = page;
-            }
-        }
-        res.send(200);
+        model
+            .pageModel
+            .updatePage(pid, page)
+            .then(
+                function(status){
+                    res.sendStatus(200);
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
 
 
     function deletePage(req, res){
         var pid = req.params.pageId;
-
-        for(var p in pages){
-            if(pages[p]._id === pid){
-                pages.splice(p, 1);
-            }
-        }
-        res.send(200);
+        model
+            .pageModel
+            .deletePage(pid)
+            .then(
+                function(status){
+                    res.sendStatus(200);
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
 
 

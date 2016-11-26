@@ -12,7 +12,11 @@
         function login(user) {
             UserService.findUserByCredentials(user.username, user.password)
                 .success(function(user){
-                    $location.url("/user/" + user._id);
+                    if(user === "0"){
+                        vm.error = "User not found";
+                    }else {
+                        $location.url("/user/" + user._id);
+                    }
                 })
                 .error(function(){
                     vm.error = "Unable to login";
@@ -29,8 +33,8 @@
         function register(user) {
             if(user.password === vm.confirmPassword) {
                 UserService.createUser(user)
-                 .success(function(){
-                    $location.url("/user/" + user._id);
+                 .success(function(newUser){
+                    $location.url("/user/" + newUser._id);
                 })
                     .error(function(){
                     vm.error = "Unable to register";
@@ -64,7 +68,7 @@
         function updateUser(user) {
            UserService.updateUser(vm.userId, user)
                .success(function(){
-                $location.url("/user/" + user._id);
+                $location.url("/user/" + vm.userId);
                })
                .error(function(){
                 vm.error = "Unable to update profile";

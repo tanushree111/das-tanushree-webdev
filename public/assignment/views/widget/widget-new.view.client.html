@@ -2,9 +2,9 @@
     {{model.error}}
 </div>
 <div>
-    <div ng-if="model.widget.widgetType">
-    <div ng-switch="model.widget.widgetType">
-        <div ng-switch-when="HEADER">
+    <div ng-if="model.widget.type">
+    <div ng-switch="model.widget.type">
+        <div ng-switch-when="HEADING">
             <ng-include src="'views/widget/widget-header-new.view.client.html'"></ng-include>
         </div>
         <div ng-switch-when="IMAGE">
@@ -12,6 +12,12 @@
         </div>
         <div ng-switch-when="YOUTUBE">
             <ng-include src="'views/widget/widget-youtube-new.view.client.html'"></ng-include>
+        </div>
+        <div ng-switch-when="HTML">
+            <ng-include src="'views/widget/widget-html-new.view.client.html'"></ng-include>
+        </div>
+        <div ng-switch-when="INPUT">
+            <ng-include src="'views/widget/widget-text-new.view.client.html'"></ng-include>
         </div>
     </div>
         </div>
