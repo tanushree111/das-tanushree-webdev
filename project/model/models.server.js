@@ -20,9 +20,7 @@ module.exports = function() {
     mongoose.connection.on('disconnected', function () {
         console.log('Mongoose default connection disconnected');
     });
-   // mongoose.connect('mongodb://localhost/wam-fall-2016');
     var userModel = require("./user/user.model.server")();
-    //var pageModel = require("./page/page.model.server")();
 
     var model = {
         userModel: userModel
