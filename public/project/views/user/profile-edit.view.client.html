@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                Edit Profile
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="white-icon" ng-click="model.updateUser(model.user)">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input ng-model="model.user.firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input ng-model="model.user.lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input ng-model="model.user.address" type="text" class="form-control" id="address">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input ng-model="model.user.phone" type="text" class="form-control" id="phone">
+        </div>
+
+    </form>
+
+    <div class="form-group">
+        <form action="/api/upload"  method="post" enctype="multipart/form-data">
+
+            <label for="upload">Upload Profile Picture</label>
+            <input name="myFile"  type="file" class="form-control" id="upload" placeholder="No file chosen"/>
+            <input  name="userId" value="{{model.user._id}}"   style="display: none"/>
+
+            <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+
+        </form>
+    </div>
+
+    <a class="btn btn-danger  btn-block"
+       href="#/user/{{model.userId}}">Cancel</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+
+        </div>
+    </div>
+</nav>

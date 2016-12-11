@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/new.css" rel="stylesheet"/>
+    <link href="css/bootstrap-social.css" rel="stylesheet"/>
+    <script>
+        function drpdwn($scope) {
+            $scope.status = {
+                isopen: false
+            };
+
+
+            $scope.toggleDropdown = function ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.status.isopen = !$scope.status.isopen;
+            };
+
+            $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+        };
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Profile
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="white-icon" href="profile.html">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a class="white-icon" href="profile-edit.html">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object dp img-circle"
+                     src="https://yt3.ggpht.com/-bPLk9KCgJ04/AAAAAAAAAAI/AAAAAAAAAAA/r735wW48hIg/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                     style="width: 150px;height:150px;">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">Jose Annunziato
+                    <small> Boston</small>
+                </h4>
+                <small> jose@gmail.com | 617-380-8766</small>
+                <h5>Member Since: <a href="http://gridle.in">Jan 2016</a></h5>
+
+
+
+                <span class="label label-info">Follow <i class="fa fa-heart"></i></span>
+                <span class="label label-info">Like <i class="fa fa-thumbs-up"></i></span>
+                <span class="label label-info" uib-dropdown on-toggle="toggled(open)">
+      <a href id="simple-dropdown" uib-dropdown-toggle style="color: white">
+        Rate <i class="fa fa-star"></i>
+      </a>
+      <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+        <li>
+          None
+        </li>
+          <li>
+          1
+        </li>
+          <li>
+          2
+        </li>
+      </ul>
+                    </span>
+
+                <br/>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+    <hr style="margin:8px auto">
+    <div class="row overview">
+        <div class="col-md-4 user-pad text-center">
+            <h3><i class="fa fa-heart"></i> </h3>
+            <h4>456</h4>
+        </div>
+        <div class="col-md-4 user-pad text-center">
+            <h3><i class="fa fa-thumbs-up"></i></h3>
+            <h4>2,784</h4>
+        </div>
+        <div class="col-md-4 user-pad text-center">
+            <h3><i class="fa fa-star"></i></h3>
+            <h4>4.5/5</h4>
+        </div>
+    </div>
+    <hr style="margin:8px auto">
+<!--<br/>
+
+    <div class="row" >
+        <div class="col-xs-12" >
+            <div class="col-md-2 col-xs-2 well"><i class="fa fa-hand-o-left"></i> 3</div>
+            <div class="col-md-2 col-xs-2 well"><i class="fa fa-hand-o-right"></i> 2</div>
+            <div class="col-md-2 col-xs-2 well"><i class="fa fa-star"></i> 5</div>
+            <div class="col-md-2 col-xs-2 well" ><i class="fa fa-weixin"></i> 16</div>
+            <div class="col-md-2 col-xs-2 well"><i class="fa fa-heart-o"></i> 14</div>
+            <div class="col-md-2 col-xs-2 well"><i class="fa fa-thumbs-o-up"></i> 26</div>
+        </div>
+    </div>-->
+
+    <div class="row">
+        <ul class="nav nav-pills nav-justified" role="tablist">
+            <li class="active"><a href="#tabLent" role="tab" data-toggle="tab"><i class="fa fa-hand-o-left"></i> Lent</a></li>
+            <li><a href="#tabRvw" data-toggle="tab"><i class="fa fa-star"></i> Reviews</a></li>
+            <li><a href="#tabCnt" data-toggle="tab"><i class="fa fa-weixin"></i> Contact Renter</a></li>
+        </ul>
+
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="tabLent">
+                <h3>Content's background color is the same for the tab</h3>
+            </div>
+            <div class="tab-pane" id="tabRvw">
+                <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+            </div>
+            <div class="tab-pane" id="tabCnt">
+                <h3>We use css to change the background color of the content to be equal to the tab</h3>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

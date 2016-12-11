@@ -6,7 +6,7 @@ module.exports = function() {
     if(process.env.MONGOLAB_URI) {
         connectionString = process.env.MONGOLAB_URI;
     }
-    mongoose.connect(connectionString);
+   mongoose.connect(connectionString);
    // mongoose.connect('mongodb://localhost/wam-fall-2016');
     var userModel = require("./user/user.model.server")();
     var websiteModel = require("./website/website.model.server")();

@@ -9,7 +9,9 @@ module.exports = function() {
         findUserById: findUserById,
         updateUser: updateUser,
         findUserByCredentials: findUserByCredentials,
+        findUserByUsername: findUserByUsername,
         deleteUser: deleteUser,
+        findUserByFacebookId: findUserByFacebookId,
         //findWebsitesForUser: findWebsitesForUser
     };
     return api;
@@ -32,6 +34,13 @@ module.exports = function() {
             {
                 username: username,
                 password: password
+            });
+    }
+
+    function findUserByUsername(username){
+        return UserModel.findOne( //use alternatively findOne
+            {
+                username: username,
             });
     }
 
@@ -58,4 +67,9 @@ module.exports = function() {
     function findWebsitesForUser(userId){
         return UserModel.findById(userId).populate("websites", "name").exec();
     }
+
+    function findUserByFacebookId(facebookId) {
+        return UserModel.findOne({'facebook.id': facebookId});
+    }
+
 }

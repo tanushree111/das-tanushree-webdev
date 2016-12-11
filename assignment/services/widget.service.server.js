@@ -32,14 +32,13 @@ module.exports = function(app, model) {
             {"widgetType": "LINK"},{"widgetType": "BUTTON"},{"widgetType": "IMAGE"},{"widgetType": "YOUTUBE"},
             {"widgetType": "DATA TABLE"},{"widgetType": "REPEATER"}
         ];
-
+    app.post('/api/upload', upload.single('myFile'), uploadImage);
     app.post('/api/page/:pageId/widget', createWidget);
     app.get('/api/page/:pageId/widget', findAllWidgetsForPage);
     app.get('/api/widget/:widgetId', findWidgetById);
     app.put('/api/widget/:widgetId', updateWidget);
     app.delete('/api/widget/:widgetId', deleteWidget);
     app.get('/api/widgetTypes', getWidgetTypes);
-    app.post('/api/upload', upload.single('myFile'), uploadImage);
     app.put('/api/page/:pageId/widget', sortWidgets);
 
 
@@ -167,25 +166,61 @@ module.exports = function(app, model) {
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
         if(widgetId != null && widgetId != "") {
-            for (var w in widgets) {
-                if (widgets[w]._id === widgetId) {
-                    widgets[w].url = '/assignment/uploads/' + filename;
-                    widgets[w].width = width;
-                    break;
-                }
-            }
+            model
+                .widgetModel
+                .findWidgetById(widgetId)
+                .then(
+                    function (widget) {
+                        if (widget) {
+                            widget.url = '/assignment/uploads/' + filename;
+                            widget.width = width;
+                            model
+                                .widgetModel
+                                .updateWidget(widgetId, widget)
+                                .then(
+                                    function(status){
+                                        var url = '../assignment/index.html#/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget/' + widgetId;
+                                        res.redirect(url);
+                                    }
+                                );
+                        } else {
+                            var widget = {};
+                            widget.pageId = pageId;
+                            widget.widgetType = "IMAGE";
+                            widget.url = '/assignment/uploads/' + filename;
+                            widget.width = width;
+                            model
+                                .widgetModel
+                                .createWidget(pageId, widget)
+                                .then(
+                                    function(newWidget){
+                                        var url = '../assignment/index.html#/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget/' + widgetId;
+                                        res.redirect(url);
+                                    }
+                                );
+                        }
+                    },
+                    function (error) {
+
+                    }
+                );
+
         }else{
-            var widget = {}
-            widget._id = (new Date()).getTime().toString();
-            widgetId = widget._id;
+            var widget = {};
             widget.pageId = pageId;
             widget.widgetType = "IMAGE";
             widget.url = '/assignment/uploads/' + filename;
             widget.width = width;
-            widgets.push(widget);
+            model
+                .widgetModel
+                .createWidget(pageId, widget)
+                .then(
+                    function(newWidget){
+                        var url = '../assignment/index.html#/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget/' + widgetId;
+                        res.redirect(url);
+                    }
+                );
         }
-            var url = '../assignment/index.html#/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget/' + widgetId;
-            res.redirect(url);
 
     }
 
