@@ -65,7 +65,7 @@
         init();
 
         function createWidget(widget) {
-            if (widget.type) {
+            if (widget && widget.type && widget.name) {
                 if (widget.type === "HEADING" && !widget.text) {
                     vm.error = "Text field is mandatory for Header widget";
                 } else if ((widget.type === "IMAGE" || widget.type === "YOUTUBE") && !widget.url) {
@@ -79,8 +79,12 @@
                             vm.error = "Unable to create widget";
                         });
                 }
-            } else {
+            } else if(widget && !widget.type){
                 vm.error = "Widget type unidentified";
+            } else if(widget && !widget.name){
+                vm.error = "Widget name is mandatory";
+            } else{
+                vm.error = "Widget name and type are mandatory";
             }
         }
     }
@@ -105,7 +109,8 @@
         init();
 
         function updateWidget(widget) {
-            if (widget.type) {
+
+            if (widget && widget.type && widget.name) {
                 if (widget.type === "HEADER" && !widget.text) {
                     vm.error = "Text field is mandatory for Header widget";
                 } else if ((widget.type === "IMAGE" || widget.type === "YOUTUBE") && !widget.url) {
@@ -119,8 +124,12 @@
                             vm.error = "Unable to edit widget";
                         });
                 }
-            } else {
+            } else if(widget && !widget.type){
                 vm.error = "Widget type unidentified";
+            } else if(widget && !widget.name){
+                vm.error = "Widget name is mandatory";
+            }  else{
+                vm.error = "Widget name and type are mandatory";
             }
         }
 

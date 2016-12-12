@@ -27,7 +27,7 @@
         vm.createWebsite = createWebsite;
 
         function createWebsite(website) {
-            if(website.name) {
+            if(website && website.name) {
                 WebsiteService.createWebsite(vm.userId, website)
                     .success(function(){
                         $location.url("/user/" + vm.userId + "/website");
@@ -59,7 +59,7 @@
         vm.deleteWebsite = deleteWebsite;
 
         function updateWebsite(website) {
-            if(website.name) {
+            if(website && website.name) {
                 WebsiteService.updateWebsite(vm.websiteId, website)
                     .success(function(){
                         $location.url("/user/" + vm.userId + "/website");

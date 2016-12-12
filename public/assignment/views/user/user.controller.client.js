@@ -10,9 +10,7 @@
         vm.login = login;
 
         function login(user) {
-            if (!user || !user.username || !user.password) {
-                vm.error = "Username and Paassword are mandatory";
-            } else {
+            if (user) {
                 UserService
                     .login(user)
                     .then(
@@ -35,23 +33,23 @@
         vm.confirmPassword;
 
         function register(user) {
-            if (!user || !user.username || !user.password || !vm.confirmPassword) {
-                vm.error = "All fields are mandatory";
-            } else if (user.password === vm.confirmPassword) {
-                UserService
-                    .register(user)
-                    .then(
-                        function (response) {
-                            var user = response.data;
-                            $rootScope.currentUser = user;
-                            $location.url("/user");
-                        },
-                        function (err){
-                            vm.error = "Unable to register";
-                        })
+            if (user) {
+                if (user.password === vm.confirmPassword) {
+                    UserService
+                        .register(user)
+                        .then(
+                            function (response) {
+                                var user = response.data;
+                                $rootScope.currentUser = user;
+                                $location.url("/user");
+                            },
+                            function (err) {
+                                vm.error = "Unable to register";
+                            })
 
-            } else {
-                vm.error = "Passwords in both fields don't match";
+                } else {
+                    vm.error = "Passwords in both fields don't match";
+                }
             }
         }
     }

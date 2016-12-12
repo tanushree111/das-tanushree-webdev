@@ -1,22 +1,39 @@
 <div class="container">
     <h1>Register</h1>
+    <div ng-show="regForm.$invalid && regForm.$submitted" class="alert alert-danger" role="alert">
+        <ul>
+            <li ng-show="regForm.username.$invalid">Username is mandatory</li>
+            <li ng-show="regForm.password.$invalid">Password is mandatory</li>
+            <li ng-show="regForm.vpassword.$invalid">Confirm Password is mandatory</li>
+        </ul>
+    </div>
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>
-    <input ng-model="model.user.username"
+    <form name="regForm" novalidate>
+    <input name="username"
+            ng-model="model.user.username"
            type="text"
            class="form-control"
+           required
            placeholder="username"/>
-    <input ng-model="model.user.password"
+    <input name="password"
+            ng-model="model.user.password"
            type="password"
            class="form-control"
+           required
            placeholder="password"/>
-    <input ng-model="model.confirmPassword"
+    <input name="vpassword"
+            ng-model="model.confirmPassword"
            type="password"
            class="form-control"
+           required
            placeholder="verify password"/>
-    <a class="btn btn-primary btn-block"
-       ng-click="model.register(model.user)">Register</a>
+    <button class="btn btn-primary btn-block"
+       ng-click="model.register(model.user)">Register</button>
+        </form>
+    <div class="brk">
     <a class="btn btn-danger  btn-block"
        href="#/login">Cancel</a>
+        </div>
 </div>

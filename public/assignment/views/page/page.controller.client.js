@@ -25,7 +25,7 @@
         vm.createPage = createPage;
 
         function createPage(page) {
-            if(page.name) {
+            if(page && page.name) {
                 PageService.createPage(vm.websiteId, page)
                         .success(function(){
                             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
@@ -58,7 +58,7 @@
         vm.deletePage = deletePage;
 
         function updatePage(page) {
-            if(page.name) {
+            if(page && page.name) {
                 PageService.updatePage(vm.pageId, page)
                     .success(function(){
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
