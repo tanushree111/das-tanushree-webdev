@@ -1,30 +1,433 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
+	<title>Tanushree</title>
+	<!--fonts-->
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+	<!--//fonts-->
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- for-mobile-apps -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Kong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //for-mobile-apps -->
+	<!-- js -->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- js -->
+	<!-- start-smooth-scrolling -->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+	<!-- start-smooth-scrolling -->
+
 </head>
 <body>
-    <h1>Web Dev Course Home Page</h1>
+<!-- banner -->
+<div class="banner" id="home">
+	<div class="container"> 
+		<div class="top-header row">
+			<script src="js/classie.js"></script>
+			<!--top-nav---->
 
-    <p>
-        Customize this home page to your linking.
-    </p>
+			<div class="top-nav">
+				<div class="nav-icon">
+					    <a href="#" class="right_bt" id="activator"><span> </span> </a>
+				</div>
+				<div class="box" id="box">
+					<div class="box_content">        					                         
+						<div class="box_content_center">
+							<div class="form_content">
+								<div class="menu_box_list">
+									<ul>
+										<li><a class="scroll" href="#home"><span>home</span></a></li>
+										<li><a class="scroll" href="#about"><span>about</span></a></li>
+										<li><a class="scroll" href="#webdev"><span>CS5610</span></a></li>
+										<li><a class="scroll" href="#education"><span>education</span></a></li>
+										<li><a class="scroll" href="#experience"><span>experience</span></a></li>
+										<li><a class="scroll" href="#myskills"><span>skills</span></a></li>
+										<li><a class="scroll" href="#contact"><span>Contact</span></a></li>
+										<div class="clearfix"> </div>
+									</ul>
+								</div>
+								<a class="boxclose" id="boxclose"> <span> </span></a>
+							</div>                                  
+						</div> 	
+					</div> 
+				</div>       	  
+			</div>
+			<!---start-click-drop-down-menu----->
+			        <!----start-dropdown--->
+			         <script type="text/javascript">
+						var $ = jQuery.noConflict();
+							$(function() {
+								$('#activator').click(function(){
+									$('#box').animate({'top':'0px'},900);
+								});
+								$('#boxclose').click(function(){
+								$('#box').animate({'top':'-1000px'},900);
+								});
+							});
+							$(document).ready(function(){
+							//Hide (Collapse) the toggle containers on load
+							$(".toggle_container").hide(); 
+							//Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+							$(".trigger").click(function(){
+								$(this).toggleClass("active").next().slideToggle("slow");
+									return false; //Prevent the browser jump to the link anchor
+							});
+												
+						});
+					</script>
+			<!---//End-click-drop-down-menu----->
+			<div class="clearfix"> </div>
+		</div>
+		<div class="banner-info">
+			<div class="banner-left">
+				<img src="images/1.png" alt=""/>
+			</div>
+			<div class="banner-right">
+				<h1>I’M TANUSHREE DAS</h1>
+				<div class="border"></div>
+				<h2>GRADUATE STUDENT - COMPUTER SCIENCE</h2>
+				<a href="./docs/Resume-Tanushree-Coop2017.pdf" download>DOWNLOAD MY RESUME</a>
+			</div>
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/tanushree111/das-tanushree-webdev">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+			<div class="clearfix"></div>
+		</div>
+		<!--<div class="jlink">
+			<a class="jumper" href="#pliip"><img src="images/jumpicon.png" width="50px" height="50px"/></a>
+		</div>-->
+	</div>
+</div>
+<!--/header-banner-->
+<!--about-->
+<div class="intrmstrip" id="about"></div>
+<div class="about text-center" >
+	<div class="container">
+		<h3>ABOUT ME</h3>
+		<div class="strip text-center"><img src="images/about.png"/></div>
+		<p>I am a third semester Computer Science Master’s student at Northeastern University with over 5 and half years of experience in Software development. My strive for excellence and passion to attain depth in my knowledge helped me in my decision to graduate in Computer Science before I venture out to heighten my career to the next level. Currently, I am seeking coop opportunities where I can contribute my knowledge and enhance my skills as well.
+
+			After graduation I aim towards working in an innovative and competitive environment with team members and use my knowledge and skills for both individual and organizational growth and to maintain a symbiotic relationship between me and the organization while working towards making a million good changes in life of uncountable people on this earth every second.</p>
+		<ul>
+			<li><a class="fb" href="https://www.facebook.com/tanushreedas111"></a></li>
+			<li><a class="in" href="https://www.linkedin.com/in/tan111"></a></li>
+			<li><a class="goog" href="https://plus.google.com/u/3/116765361751808427319"></a></li>
+		</ul>
+	</div>
+</div>
+<!--//about-->
+<!--<div class="about-back"></div>-->
+<!--portfolio-->
+<div class="intrmstrip"></div>
+<div class="gallery-section text-center" id="webdev">
+	<div class="container">
+		<h3>CS5610</h3>
+		<div class="strip text-center"><img src="images/port.png" alt=" "/></div>
+		<p style="color:white">This section contains my learnings in the course CS5610- Web Development taught by Prof. Jose Annunziato.</p>
+		<div class="gallery-grids">
+			<div class="top-gallery">
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p1.jpg" class="swipebox"><img src="images/bkg-7.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Assignment</h4>
+							<p>Assignments 1 - 6</p>
+							<div class="button"><a href="assignment/index.html">VIEW</a></div>
+						</div></a>
+				</div>
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p2.jpg" class="swipebox"><img src="images/bkg-8.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Project</h4>
+							<p>ReWear</p>
+							<div class="button"><a href="project/index.html">VIEW</a></div>
+						</div></a>
+				</div>
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p3.jpg" class="swipebox"><img src="images/bkg-4.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Test MongoDB</h4>
+							<p>Basic test for checking MongoDB connection</p>
+							<div class="button"><a href="test/index.html">VIEW</a></div>
+						</div></a>
+				</div>
+				<div class="col-md-4 gallery-grid gallery1">
+					<a href="images/p4.jpg" class="swipebox"><img src="images/bkg-3.jpg" class="img-responsive" alt="/">
+						<div class="textbox">
+							<h4>Github</h4>
+							<p>My repository at Github.com</p>
+							<div class="button"><a href="https://github.com/tanushree111/das-tanushree-webdev">VIEW</a></div>
+						</div></a>
+				</div>
+
+				<div class="clearfix"> </div>
+			</div>
+			<link rel="stylesheet" href="css/swipebox.css">
+			<script src="js/jquery.swipebox.min.js"></script>
+			<script type="text/javascript">
+				jQuery(function($) {
+					$(".swipebox").swipebox();
+				});
+			</script>
+		</div>
+	</div>
+</div>
+<!--//portfolio-->
+<!--education-->
+<div class="intrmstrip" id="education"></div>
+<div class="education text-center">
+	<div class="container">
+		<div class="edu-info">
+			<h3>EDUCATION</h3>
+		</div>
+		<div class="strip text-center"><img src="images/edu.png" alt=" "/></div>
+		<div class="edu-grids">
+			<div class="col-md-4 edu-grid">
+				<p>2015 - 2017</p><span>GradStudies</span>
+				<img src="images/arrow.png" alt=""/>
+				<div class="edu-border">
+					<div class="edu-grid-master">
+						<h3>MASTERS DEGREE IN COMPUTER SCIENCE</h3>
+						<h4>Northeastern University</h4>
+					</div>
+					<div class="edu-grid-info">
+						<h5>GPA: 3.33 </h5><h5>
+						Subjects: PDP, Algo, AI, Web Dev, Map Reduce.</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 edu-grid">
+				<p>2005 - 2009</p><span>Undergrad</span>
+				<img src="images/arrow.png" alt=""/>
+				<div class="edu-border">
+					<div class="edu-grid-master">
+						<h3>BACHELOR DEGREE OF COMPUTER SCIENCE</h3>
+						<h4>Kalinga University</h4>
+					</div>
+					<div class="edu-grid-info">
+						<h5>GPA: 9.64 </h5><h5>
+						Subjects: OS, Algo, Software Eng, Microprocessor.</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 edu-grid">
+				<p>2002 - 2004</p><span>HighSchool</span>
+				<img src="images/arrow.png" alt=""/>
+				<div class="edu-border">
+					<div class="edu-grid-master">
+						<h3>HIGHER SECONDARY COURSE IN SCIENCE</h3>
+						<h4>BJB Junior College</h4>
+					</div>
+					<div class="edu-grid-info">
+						<h5>Score: 92.4%</h5><h5>
+						Subjects: Physic, Chemistry, Maths, Biology.</h5>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	
+</div>
+<!--//education-->
+<!--<div class="strip-border"><p></p></div>-->
+<!--work-->
+<div class="intrmstrip" id="experience"></div>
+<div class="work-experience text-center">
+	
+	<div class="container">
+		<div class="work-info">
+			<h3>WORK EXPERIENCE</h3>
+		</div>
+		<div class="strip text-center"><img src="images/work.png" alt=" "/></div>
+		<div class="work-grids">
+			<div class="col-md-4 w-grid">
+				<div class="work-grid">
+					<h3>May, 2016 - Aug, 2016</h3>
+					<div class="work-grid-info">
+						<h4>SAP Newtown Square</h4>
+						<h5>Developer Intern</h5>
+						<p>I was responsible for developing OCC V2 web services on SAP Hybris to be integerated by the mobile app of a leading wholesale company.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 w-grid">
+				<div class="work-grid">
+					<h3>Jan, 2016 - May, 2016</h3>
+					<div class="work-grid-info">
+						<h4>Northeastern University</h4>
+						<h5>Master's Assistant</h5>
+						<p>Worked as a Teaching Assistant for the course Foundations of Artificial Intelligence course for Spring 2016 with 40 students.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 w-grid">
+				<div class="work-grid">
+					<h3>2011 - 2015</h3>
+					<div class="work-grid-info">
+						<h4>SAP Labs</h4>
+						<h5>Senior Developer</h5>
+						<p>As part of Custom Development team in SAP Labs Bangalore, I got an opportunity to work on multiple customer projects spanning across various technologies.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--//work-->
+<!--<div class="services-back"></div>-->
+<!--my skill-->
+<div class="intrmstrip" id="myskills"></div>
+<div class="my-skills text-center" >
+	<div class="container">
+		<h3>MY SKILLS</h3>
+		<div class="strip text-center"><img src="images/skill.png" alt=" "/></div>
+		<div class="skill-grids">
+			<div class="col-md-2 skills-grid text-center">
+				<div class="circle" id="circles-1"></div>
+				<p>JAVA</p>
+			</div>
+			<div class="col-md-2 skills-grid text-center">
+				<div class="circle" id="circles-2"></div>
+				<p>JAVASCRIPT</p>
+			</div>
+			<div class="col-md-2 skills-grid text-center">
+				<div class="circle" id="circles-3"></div>
+				<p>HTML 5 / CSS 3</p>
+			</div>
+			<div class="col-md-2 skills-grid text-center">
+				<div class="circle" id="circles-4"></div>
+				<p>HADOOP</p>
+			</div>
+			<div class="col-md-2 skills-grid text-center">
+				<div class="circle" id="circles-5"></div>
+				<p>PYTHON</p>
+			</div>
+			<div class="col-md-2 skills-grid text-center">
+				<div class="circle" id="circles-6"></div>
+				<p>R</p>
+			</div>
+			<div class="clearfix"> </div>
+			<script type="text/javascript" src="js/circles.js"></script>
+			<script>
+				var colors = [
+					['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff'], ['#6ed4c0', '#ffffff']
+				];
+				var perc = [
+					70, 60, 70, 40, 30, 40
+				];
+				for (var i = 1; i <= 6; i++) {
+					var child = document.getElementById('circles-' + i),
+							percentage = 30 + (i * 10);
+
+					Circles.create({
+						id:         child.id,
+						percentage: perc[i-1],
+						radius:     80,
+						width:      10,
+						number:   	perc[i-1] / 1,
+						text:       '%',
+						colors:     colors[i - 1]
+					});
+				}
+
+
+			</script>
+		</div>
+	</div>
+</div>
+<!--//my skill-->
+<!--<div class="my-skill-back"></div>-->
+
+
+<div class="intrmstrip" id="contact"></div>
+<!--contact-->
+<div class="contact">
+	<div class="container">
+		<div class="contact-info text-center">
+			<h3>CONTACT</h3>
+			<div class="strip text-center"><img src="images/con1.png" alt=" "/></div>
+		</div>
+		<div class="contact-grids">
+			<div class="col-md-5 contact-left">
+				<h3>Say Hi to Me</h3>
+				<div class="stripb"></div>
+				<ul>
+					<li>Townsend Street, </li>
+					<li>Boston </li>
+					<li>02119</li>
+					<li>6173808102</li>
+					<li><a href="mailto:tanushreedas111@gmail.com">tanushreedas111@gmail.com</a></li>
+				</ul>
+			</div>
+			<div class="col-md-7 contact-right">
+				<h3>Drop Me A Line</h3>
+				<div class="stripb"></div>
+				<form>
+					<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+					<input type="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}" required="">
+					<textarea type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}" required="">Message</textarea>
+					<input type="submit" value="SEND">
+				</form>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--//contact-->
+<div class="footer-top"></div>
+<!--resume-->
+<!--<div class="resume text-center">
+	<div class="container">
+		<div class="strip text-center"><a href="#"><img src="images/down.png" alt=" "/></a></div>
+		<div class="down"><a href="#">Download My Resume</a></div>
+	</div>
+</div>-->
+<!--//resume-->
+
+<!--footer-->
+<div class="footer">
+	<div class="container">
+		<p>Copyright &copy; 2015 Kong. Template by <a href="http://w3layouts.com/"> W3layouts</a></p>
+	</div>
+</div>
+<!--//footer-->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
 </body>
 </html>
